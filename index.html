@@ -5,6 +5,7 @@
   <title>Velora.lb - Luxury Sunglasses</title>
   <!-- Google Fonts for a luxurious look -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     html, body {
       height: 100%;
@@ -75,13 +76,17 @@
       margin-top: 20px; /* space below LinkTree */
       pointer-events: auto;
       user-select: none;
+      width: 100%;
+      max-width: 100vw;
     }
     .stadium-link {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 18px;
-      width: 400px;
+      width: 95vw;
+      max-width: 400px;
+      min-width: 0;
       height: 60px;
       margin-bottom: 20px;
       background: linear-gradient(90deg, #bbbbbb 0%, #f8f8f8 100%);
@@ -97,6 +102,8 @@
       font-size: 2rem;
       font-weight: 700;
       color: #111;
+      box-sizing: border-box;
+      word-break: break-word;
     }
     .stadium-link .icon {
       display: inline-flex;
@@ -107,11 +114,13 @@
       fill: #111;
       height: 2.3rem;
       width: 2.3rem;
+      flex-shrink: 0;
     }
     .stadium-link .emoji {
       font-size: 2.2rem;
       margin-right: 10px;
       filter: grayscale(1) brightness(0.2);
+      flex-shrink: 0;
     }
     .stadium-link:last-child {
       margin-bottom: 0;
@@ -121,14 +130,55 @@
       background: linear-gradient(90deg, #cccccc 40%, #f8f8f8 100%);
       box-shadow: 0 4px 12px rgba(60,60,60,0.14);
     }
+
+    /* Responsive Styling */
     @media (max-width: 600px) {
-      .header { top: 18px; }
-      .brand-name { font-size: calc(2rem + 36px); }
-      .linktree { font-size: 1.3rem; }
-      .sun-topright { top: 12px; right: 8px; width: 42px; height: 42px; }
-      .stadium-link { width: 230px; height: 32px; border-radius: 16px; font-size: 1rem; }
-      .stadium-link .icon { font-size: 1.2rem; height: 1.2rem; width: 1.2rem; margin-right: 8px; }
-      .stadium-link .emoji { font-size: 1.2rem; margin-right: 6px; }
+      .header {
+        top: 10vw;
+      }
+      .brand-name {
+        font-size: 8vw;
+      }
+      .linktree {
+        font-size: 6vw;
+      }
+      .sun-topright {
+        top: 4vw;
+        right: 3vw;
+        width: 12vw;
+        height: 12vw;
+        min-width: 32px;
+        min-height: 32px;
+      }
+      .stadium-links {
+        margin-top: 7vw;
+        width: 100vw;
+      }
+      .stadium-link {
+        width: 94vw;
+        max-width: 98vw;
+        height: 14vw;
+        min-height: 44px;
+        font-size: 1.2rem;
+        border-radius: 7vw;
+        margin-bottom: 4vw;
+        gap: 10px;
+      }
+      .stadium-link .icon {
+        font-size: 7vw;
+        height: 7vw;
+        width: 7vw;
+        margin-right: 3vw;
+      }
+      .stadium-link .emoji {
+        font-size: 7vw;
+        margin-right: 3vw;
+      }
+    }
+    @media (max-width: 400px) {
+      .brand-name { font-size: 7vw; }
+      .linktree { font-size: 5vw; }
+      .stadium-link { font-size: 1rem; }
     }
   </style>
 </head>
