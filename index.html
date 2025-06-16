@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Velora.lb - Luxury Sunglasses</title>
-  <!-- Google Fonts for a luxurious look -->
+  <!-- Azonix font via CDN -->
+  <link href="https://fonts.cdnfonts.com/css/azonix" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&family=Roboto:wght@700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -14,7 +15,7 @@
     }
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at 60% 40%, #e8c97a 0%, #bfa75a 35%, #575757 100%);
+      background: #FFE4C4;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -24,40 +25,76 @@
     .header {
       width: 100%;
       position: absolute;
-      top: 40px;
+      /* Center header vertically, then move up a little */
+      top: 50%;
       left: 0;
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
       pointer-events: none;
+      /* Move everything up by 30px */
+      transform: translateY(calc(-52% - 30px));
+    }
+    .brand-name-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: none;
+      border: 8px solid #111;
+      border-radius: 12px;
+      /* Make box smaller from the right side by reducing right padding */
+      padding: 8px 20px 8px 44px;
+      box-sizing: border-box;
+      min-width: 200px;
+      width: fit-content;
+      margin-bottom: 0;
+      margin-top: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      /* Move the box alone up by 10px */
+      position: relative;
+      top: -10px;
     }
     .brand-name {
-      font-family: 'Playfair Display', 'Great Vibes', serif;
+      font-family: 'Azonix', Arial, sans-serif !important;
       font-size: calc(3.5rem + 50px);
       font-weight: 700;
       letter-spacing: 0.25em;
-      background: linear-gradient(90deg, #e53935 0%, #1e88e5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 4px 18px rgba(30,136,229,0.22), 0 1px 0 #e53935, 0 0px 30px #1e88e5;
+      color: #111;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      background-clip: unset !important;
+      text-shadow: none !important;
       margin: 0;
       text-align: center;
+      text-transform: uppercase;
+      display: block;
+      line-height: 1;
+      padding: 0;
     }
-    .linktree {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-top: 16px;
-      background: linear-gradient(90deg, #43ea63 30%, #137a1e 70%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 2px 10px rgba(70, 200, 70, 0.18), 0 1px 0 #137a1e;
+    .tagline {
+      font-family: 'Azonix', Arial, sans-serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: #111;
+      margin-top: 18px;
+      margin-bottom: 0;
       text-align: center;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.09em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       pointer-events: none;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .tagline .tagline-sun {
+      display: inline-flex;
+      vertical-align: middle;
+      margin-left: 0.3em;
+      margin-bottom: 2px;
     }
     .sun-topright {
       position: absolute;
@@ -128,17 +165,22 @@
       background: linear-gradient(90deg, #cccccc 40%, #f8f8f8 100%);
       box-shadow: 0 4px 12px rgba(60,60,60,0.14);
     }
-
-    /* Responsive Styling: Make stadium links much larger on mobile */
     @media (max-width: 600px) {
       .header {
-        top: 6vw;
+        top: 45%;
+        transform: translateY(-50%);
+      }
+      .brand-name-container {
+        padding: 3vw 3vw 3vw 6vw;
+        min-width: 0;
+        top: -10px;
       }
       .brand-name {
         font-size: 10vw;
       }
-      .linktree {
-        font-size: 7vw;
+      .tagline {
+        font-size: 4.4vw;
+        margin-top: 5vw;
       }
       .sun-topright {
         top: 4vw;
@@ -175,15 +217,35 @@
     }
     @media (max-width: 400px) {
       .brand-name { font-size: 9vw; }
-      .linktree { font-size: 6vw; }
+      .tagline { font-size: 4vw; }
       .stadium-link { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <span class="brand-name">Velora.lb</span>
-    <span class="linktree">LinkTree</span>
+    <span class="brand-name-container">
+      <span class="brand-name">Velora</span>
+    </span>
+    <span class="tagline">
+      Where Style Meets the Sun
+      <span class="tagline-sun">
+        <!-- Small sun SVG -->
+        <svg width="1.3em" height="1.3em" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="6" fill="#ffb300" stroke="#ff9800" stroke-width="2"/>
+          <g stroke="#ffb300" stroke-width="2" stroke-linecap="round">
+            <line x1="16" y1="2" x2="16" y2="7"/>
+            <line x1="16" y1="25" x2="16" y2="30"/>
+            <line x1="2" y1="16" x2="7" y2="16"/>
+            <line x1="25" y1="16" x2="30" y2="16"/>
+            <line x1="7.5" y1="7.5" x2="11" y2="11"/>
+            <line x1="21" y1="21" x2="24.5" y2="24.5"/>
+            <line x1="7.5" y1="24.5" x2="11" y2="21"/>
+            <line x1="21" y1="11" x2="24.5" y2="7.5"/>
+          </g>
+        </svg>
+      </span>
+    </span>
     <div class="stadium-links">
       <a class="stadium-link" href="https://www.instagram.com/velora_eyewear/" tabindex="0" title="Instagram" target="_blank" rel="noopener">
         <span class="icon">
